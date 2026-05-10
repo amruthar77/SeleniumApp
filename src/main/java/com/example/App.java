@@ -9,6 +9,12 @@ public class App
     public static void main(String[] args)
     {
         System.out.println("Hello World!");
+        ChromeOptions options = new ChromeOptions();
+
+        // Headless mode for Jenkins/Linux
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
 
         // Launch Chrome
         WebDriver driver = new ChromeDriver();
