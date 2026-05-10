@@ -10,7 +10,8 @@ pipeline {
 
         stage('Clone') {
             steps {
-                git 'https://github.com/amruthar77/SeleniumApp.git'
+                 git branch: 'main',
+              url: 'https://github.com/amruthar77/SeleniumApp.git'
             }
         }
 
