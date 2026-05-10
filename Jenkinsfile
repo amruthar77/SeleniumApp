@@ -8,10 +8,10 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                 git branch: 'main',
-              url: 'https://github.com/amruthar77/SeleniumApp.git'
+                git branch: 'main',
+                url: 'https://github.com/amruthar77/SeleniumApp.git'
             }
         }
 
@@ -21,20 +21,21 @@ pipeline {
             }
         }
 
-        stage('Run Selenium Test') {
+        stage('Test') {
             steps {
-                sh 'mvn exec:java -Dexec.mainClass=com.example.App'
+                sh 'mvn test'
             }
         }
     }
 
     post {
+
         success {
-            echo 'Build Successful'
+            echo 'Selenium tests executed successfully '
         }
 
         failure {
-            echo 'Build Failed'
+            echo 'Build or tests failed '
         }
     }
 }
